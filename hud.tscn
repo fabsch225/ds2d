@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://UI/progress_background.png" type="Texture" id=1]
 [ext_resource path="res://bars.gd" type="Script" id=2]
@@ -50,63 +50,77 @@
 [ext_resource path="res://Icons/Icon.tscn" type="PackedScene" id=48]
 [ext_resource path="res://active_big.gd" type="Script" id=49]
 [ext_resource path="res://stored_big.gd" type="Script" id=50]
+[ext_resource path="res://UI/rest/button_exit.png" type="Texture" id=51]
+[ext_resource path="res://UI/rest/button_exit_pressed.png" type="Texture" id=52]
+[ext_resource path="res://UI/Boss/bar_background.png" type="Texture" id=53]
+[ext_resource path="res://UI/Boss/bar_base.png" type="Texture" id=54]
+[ext_resource path="res://Boss.gd" type="Script" id=55]
+[ext_resource path="res://UI/elevator/elevator_bg.png" type="Texture" id=56]
+[ext_resource path="res://use_elevator.gd" type="Script" id=57]
+[ext_resource path="res://call_elevator.gd" type="Script" id=58]
+[ext_resource path="res://items.gd" type="Script" id=59]
+[ext_resource path="res://chest_grid.gd" type="Script" id=60]
+[ext_resource path="res://chest.gd" type="Script" id=61]
+[ext_resource path="res://chest_prompt.gd" type="Script" id=62]
 
 [sub_resource type="DynamicFont" id=1]
-size = 28
+size = 7
 font_data = ExtResource( 13 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 34 )
-region_rect = Rect2( 0, 0, 62, 26 )
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 13 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 34 )
 region_rect = Rect2( 0, 0, 62, 26 )
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 35 )
+texture = ExtResource( 34 )
 region_rect = Rect2( 0, 0, 62, 26 )
 
 [sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 62, 26 )
+
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 33 )
 region_rect = Rect2( 0, 0, 62, 282 )
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 31 )
 region_rect = Rect2( 0, 0, 12, 44 )
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=8]
 ScrollContainer/styles/bg = null
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 2 )
-VScrollBar/styles/grabber_highlight = SubResource( 3 )
-VScrollBar/styles/grabber_pressed = SubResource( 4 )
-VScrollBar/styles/scroll = SubResource( 5 )
-VScrollBar/styles/scroll_focus = SubResource( 6 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 32 )
-region_rect = Rect2( 0, 0, 10, 42 )
+VScrollBar/styles/grabber = SubResource( 3 )
+VScrollBar/styles/grabber_highlight = SubResource( 4 )
+VScrollBar/styles/grabber_pressed = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 6 )
+VScrollBar/styles/scroll_focus = SubResource( 7 )
 
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 32 )
 region_rect = Rect2( 0, 0, 10, 42 )
 
 [sub_resource type="StyleBoxTexture" id=10]
-
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 31 )
-region_rect = Rect2( 0, 0, 12, 44 )
-
-[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 32 )
 region_rect = Rect2( 0, 0, 10, 42 )
 
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 0, 12, 44 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 10, 42 )
 
 [sub_resource type="StyleBoxEmpty" id=14]
 
@@ -116,16 +130,22 @@ region_rect = Rect2( 0, 0, 10, 42 )
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
-[sub_resource type="Theme" id=18]
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="Theme" id=19]
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 13 )
-VScrollBar/styles/grabber_highlight = SubResource( 14 )
-VScrollBar/styles/grabber_pressed = SubResource( 15 )
-VScrollBar/styles/scroll = SubResource( 16 )
-VScrollBar/styles/scroll_focus = SubResource( 17 )
+VScrollBar/styles/grabber = SubResource( 14 )
+VScrollBar/styles/grabber_highlight = SubResource( 15 )
+VScrollBar/styles/grabber_pressed = SubResource( 16 )
+VScrollBar/styles/scroll = SubResource( 17 )
+VScrollBar/styles/scroll_focus = SubResource( 18 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 14
+font_data = ExtResource( 13 )
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -216,6 +236,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="heals" type="RichTextLabel" parent="bars/TextureRect"]
+margin_left = 43.7425
+margin_top = 14.8342
+margin_right = 83.7425
+margin_bottom = 54.8342
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "11"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coins" type="RichTextLabel" parent="bars/TextureRect"]
+margin_left = 11.013
+margin_top = 14.7633
+margin_right = 51.013
+margin_bottom = 54.7633
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "11"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="pause" type="Control" parent="."]
 visible = false
 anchor_left = 0.5
@@ -275,8 +319,8 @@ margin_left = -42.0
 margin_top = -14.0
 margin_right = 42.0
 margin_bottom = 14.0
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Pause"
 scroll_active = false
@@ -303,8 +347,8 @@ margin_top = -14.0
 margin_right = 54.5
 margin_bottom = 14.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Resume"
 scroll_active = false
@@ -332,8 +376,8 @@ margin_top = -14.0
 margin_right = 58.5
 margin_bottom = 14.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Settings"
 scroll_active = false
@@ -360,8 +404,8 @@ margin_top = -14.0
 margin_right = 31.0
 margin_bottom = 14.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Quit"
 scroll_active = false
@@ -388,8 +432,8 @@ margin_top = -14.0
 margin_right = 126.5
 margin_bottom = 14.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Reload Checkpoint"
 scroll_active = false
@@ -416,8 +460,8 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = 420.0
 margin_bottom = 323.0
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Controls
 
@@ -425,7 +469,7 @@ Move - A / D
 Jump - W
 Attack - Space
 Dash - Shift
-
+Heal - CTRL
 Pause - Escape
 Inventory - Tab / I
 Map - M"
@@ -446,8 +490,8 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = 413.0
 margin_bottom = 111.0
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Hold shift + A/D while attacking to dash right after"
 scroll_active = false
@@ -574,8 +618,8 @@ margin_left = 11.0
 margin_top = 8.0
 margin_right = 261.0
 margin_bottom = 176.0
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Hold shift + A/D while attacking to dash right after"
 scroll_active = false
@@ -595,7 +639,7 @@ margin_right = 504.0
 margin_bottom = 280.0
 rect_min_size = Vector2( 504, 280 )
 size_flags_vertical = 3
-theme = SubResource( 7 )
+theme = SubResource( 8 )
 scroll_horizontal_enabled = false
 script = ExtResource( 30 )
 
@@ -612,11 +656,157 @@ visible = false
 margin_left = 508.0
 margin_right = 520.0
 margin_bottom = 280.0
-custom_styles/grabber_highlight = SubResource( 8 )
-custom_styles/grabber = SubResource( 9 )
-custom_styles/scroll_focus = SubResource( 10 )
-custom_styles/scroll = SubResource( 11 )
-custom_styles/grabber_pressed = SubResource( 12 )
+custom_styles/grabber_highlight = SubResource( 9 )
+custom_styles/grabber = SubResource( 10 )
+custom_styles/scroll_focus = SubResource( 11 )
+custom_styles/scroll = SubResource( 12 )
+custom_styles/grabber_pressed = SubResource( 13 )
+
+[node name="chest" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -654.0
+margin_top = -560.0
+margin_right = -525.0
+rect_pivot_offset = Vector2( -1056.86, -718.361 )
+script = ExtResource( 61 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="chest"]
+visible = false
+position = Vector2( 48, 48 )
+scale = Vector2( 4, 4 )
+z_index = 1000
+z_as_relative = false
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 5
+
+[node name="TextureRect" type="TextureRect" parent="chest"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -270.0
+margin_right = 645.0
+margin_bottom = 270.0
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chest/TextureRect"]
+margin_left = 31.0
+margin_top = 40.0
+margin_right = 368.0
+margin_bottom = 124.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="interfaceA" type="HBoxContainer" parent="chest/TextureRect/VBoxContainer"]
+margin_right = 593.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 570, 100 )
+rect_pivot_offset = Vector2( -216.698, 30 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chest/TextureRect/VBoxContainer/interfaceA"]
+margin_right = 320.0
+margin_bottom = 185.0
+
+[node name="takeAll" type="TextureButton" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/takeAll"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Take all Items"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="take" type="TextureButton" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer"]
+margin_top = 84.0
+margin_right = 320.0
+margin_bottom = 164.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/take"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Take Item"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="chest/TextureRect/VBoxContainer/interfaceA"]
+margin_left = 324.0
+margin_right = 593.0
+margin_bottom = 185.0
+texture = ExtResource( 37 )
+
+[node name="text" type="RichTextLabel" parent="chest/TextureRect/VBoxContainer/interfaceA/TextureRect"]
+margin_left = 11.0
+margin_top = 8.0
+margin_right = 261.0
+margin_bottom = 176.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Hold shift + A/D while attacking to dash right after"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="items" type="HBoxContainer" parent="chest/TextureRect/VBoxContainer"]
+margin_top = 189.0
+margin_right = 593.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 504, 280 )
+script = ExtResource( 59 )
+
+[node name="grid" type="GridContainer" parent="chest/TextureRect/VBoxContainer/items"]
+margin_right = 496.0
+rect_min_size = Vector2( 496, 0 )
+rect_pivot_offset = Vector2( -486.54, 111 )
+size_flags_vertical = 2
+columns = 5
+script = ExtResource( 60 )
 
 [node name="camp_fire" type="Control" parent="."]
 visible = false
@@ -664,8 +854,8 @@ margin_top = -14.0
 margin_right = 115.5
 margin_bottom = 14.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Rest (and Save)"
 scroll_active = false
@@ -692,8 +882,8 @@ margin_top = -14.0
 margin_right = 36.0
 margin_bottom = 14.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Save
 "
@@ -702,7 +892,164 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="use_elevator" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+script = ExtResource( 57 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="use_elevator"]
+margin_left = 25.0
+margin_top = 882.0
+margin_right = 438.0
+margin_bottom = 919.0
+texture = ExtResource( 56 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rest" type="TextureButton" parent="use_elevator/TextureRect"]
+margin_left = 45.0
+margin_top = 46.337
+margin_right = 365.0
+margin_bottom = 126.337
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="use_elevator/TextureRect/rest"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Use Elevator
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chest_prompt" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -466.0
+script = ExtResource( 62 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="chest_prompt"]
+margin_left = 25.0
+margin_top = 882.0
+margin_right = 438.0
+margin_bottom = 919.0
+texture = ExtResource( 56 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="open" type="TextureButton" parent="chest_prompt/TextureRect"]
+margin_left = 45.0
+margin_top = 46.337
+margin_right = 365.0
+margin_bottom = 126.337
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chest_prompt/TextureRect/open"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Open
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="call_elevator" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+script = ExtResource( 58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="call_elevator"]
+margin_left = 25.0
+margin_top = 882.0
+margin_right = 438.0
+margin_bottom = 919.0
+texture = ExtResource( 56 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rest" type="TextureButton" parent="call_elevator/TextureRect"]
+margin_left = 45.0
+margin_top = 46.686
+margin_right = 365.0
+margin_bottom = 126.686
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="call_elevator/TextureRect/rest"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Use Lever
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="rest" type="Control" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -20.0
@@ -739,6 +1086,20 @@ margin_top = 42.0
 margin_right = 994.0
 margin_bottom = 162.0
 texture = ExtResource( 41 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="TextureButton" parent="rest/TextureRect/TextureRect"]
+margin_left = 860.812
+margin_top = 12.2664
+margin_right = 916.812
+margin_bottom = 105.266
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control" type="Control" parent="rest/TextureRect/TextureRect"]
 anchor_left = 0.5
@@ -759,8 +1120,8 @@ margin_top = -6.36396
 margin_right = 168.891
 margin_bottom = 73.636
 rect_min_size = Vector2( 260, 80 )
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 meta_underlined = false
 text = "Inventory"
 scroll_active = false
@@ -870,7 +1231,7 @@ margin_right = 460.0
 margin_bottom = 680.0
 rect_min_size = Vector2( 460, 280 )
 size_flags_vertical = 3
-theme = SubResource( 18 )
+theme = SubResource( 19 )
 scroll_horizontal_enabled = false
 script = ExtResource( 30 )
 
@@ -977,11 +1338,11 @@ visible = false
 margin_left = 508.0
 margin_right = 520.0
 margin_bottom = 280.0
-custom_styles/grabber_highlight = SubResource( 8 )
-custom_styles/grabber = SubResource( 9 )
-custom_styles/scroll_focus = SubResource( 10 )
-custom_styles/scroll = SubResource( 11 )
-custom_styles/grabber_pressed = SubResource( 12 )
+custom_styles/grabber_highlight = SubResource( 9 )
+custom_styles/grabber = SubResource( 10 )
+custom_styles/scroll_focus = SubResource( 11 )
+custom_styles/scroll = SubResource( 12 )
+custom_styles/grabber_pressed = SubResource( 13 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="rest/TextureRect/VBoxContainer/HBoxContainer"]
 margin_left = 484.0
@@ -1002,8 +1363,8 @@ margin_left = -187.048
 margin_top = 11.9567
 margin_right = 193.952
 margin_bottom = 355.957
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 meta_underlined = false
 scroll_active = false
@@ -1033,8 +1394,8 @@ margin_left = -187.048
 margin_top = 11.9567
 margin_right = 193.952
 margin_bottom = 355.957
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 meta_underlined = false
 scroll_active = false
@@ -1051,6 +1412,65 @@ hframes = 16
 vframes = 28
 frame = 100
 
+[node name="Boss" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+rect_scale = Vector2( 4, 4 )
+script = ExtResource( 55 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Boss"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -42.0
+margin_right = 135.0
+margin_bottom = 16.0
+texture = ExtResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Boss/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -8.0
+margin_right = 127.5
+margin_bottom = 20.0
+texture = ExtResource( 54 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Boss/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -107.0
+margin_top = 4.0
+margin_right = 80.0
+margin_bottom = 19.0
+grow_horizontal = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 20 )
+text = "Fabian"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="pause/HBoxContainer/menu/resume" to="pause/HBoxContainer/menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pause/HBoxContainer/menu/quit" to="pause/HBoxContainer/menu" method="_on_quit_pressed"]
 [connection signal="pressed" from="pause/HBoxContainer/menu/reload" to="pause/HBoxContainer/menu" method="_on_reload_pressed"]
@@ -1060,8 +1480,14 @@ frame = 100
 [connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/armor" to="inv/TextureRect/VBoxContainer/active" method="_on_armor_pressed"]
 [connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/accs" to="." method="_on_accs_pressed"]
 [connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/accs" to="inv/TextureRect/VBoxContainer/active" method="_on_accs_pressed"]
+[connection signal="pressed" from="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/takeAll" to="chest" method="_on_takeAll_pressed"]
+[connection signal="pressed" from="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/take" to="chest" method="_on_take_pressed"]
 [connection signal="pressed" from="camp_fire/TextureRect/VBoxContainer/rest" to="camp_fire" method="_on_rest_pressed"]
 [connection signal="pressed" from="camp_fire/TextureRect/VBoxContainer/save" to="camp_fire" method="_on_save_pressed"]
+[connection signal="pressed" from="use_elevator/TextureRect/rest" to="use_elevator" method="_on_rest_pressed"]
+[connection signal="pressed" from="chest_prompt/TextureRect/open" to="chest_prompt" method="_on_open_pressed"]
+[connection signal="pressed" from="call_elevator/TextureRect/rest" to="call_elevator" method="_on_rest_pressed"]
+[connection signal="pressed" from="rest/TextureRect/TextureRect/exit" to="rest" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="rest/TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/active_big" to="rest" method="_on_active_mouse_entered"]
 [connection signal="pressed" from="rest/TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/active_big/sword" to="rest/TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/active_big" method="_on_sword_pressed"]
 [connection signal="pressed" from="rest/TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/active_big/armor" to="rest/TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/active_big" method="_on_armor_pressed"]

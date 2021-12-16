@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
+var rng = RandomNumberGenerator.new()
+
 const WITH_SAVES = false
+
 
 var move_vec = Vector2()
 
@@ -9,6 +12,10 @@ var default_move_speed = 130
 var move_speed_modifier = float(move_speed) /  default_move_speed
 var max_move_speed = 230
 var min_move_speed = 70
+
+
+var on_elevator = false
+var current_elevator = null
 
 var real_grav = 0
 var gravity = 8
@@ -30,10 +37,13 @@ var stunned = false
 var dashing = false
 
 var dash_duration = 0.3
-var dash_end = 0.45
+var dash_inv = 0.2#0.1: HARD, 0.2 NORMAL, 0.3 EASY
+
+
+var dash_end = 0.32#was 0.45
 var dash_speed = 320
 var recover_speed = 1
-var dash_block = 1
+var dash_block = 0.8#was 1
 var dash_timestamp = 0
 var normal_speed = move_speed
 var dashed_once = false
@@ -50,6 +60,10 @@ var agility = float(2)
 var health = 100
 var stamina = 100
 var invoulnerable = false
+
+
+var healings = 0
+var healing_cooldown = false
 
 
 var stamina_recharge = 0
@@ -84,6 +98,30 @@ func damage(d):
 	health -= d * (1 - PlayerData.global.defense / float(100))
 	print("Defense: ", defense)
 	print("Damage Taken: ", d * (1 - defense), "  (", (1 - defense), " %)")
+	if health <= 0:
+		die()
+
+func die():
+	Hud.boss.stop()
+	get_tree().reload_current_scene()
+
+func heal():
+	print(healings)
+	if (healings > 0 and health != PlayerData.global.stats.health and is_on_floor()):
+		if (healing_cooldown or dashing or attacking):
+			return
+		healing_cooldown = true
+		healings -= 1
+		health += PlayerData.global.stats.health * (PlayerData.global.stats.healing / 100)
+		if health > PlayerData.global.stats.health:
+			health = PlayerData.global.stats.health
+			
+		var t = move_speed
+		move_speed = 0
+		$Effects.play("heal")
+		yield(get_tree().create_timer(1), "timeout")
+		move_speed = t
+		healing_cooldown = false
 
 func _process(delta):
 	update_sprite()
@@ -94,14 +132,31 @@ func _process(delta):
 	
 	if Input.is_action_pressed("exit"):
 		get_tree().quit()
-	if Input.is_action_pressed("restart"):
+	elif Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
-	if Input.is_action_pressed("pause"):
+	elif Input.is_action_pressed("pause"):
 		Hud.change_mode("pause")
-	if Input.is_action_pressed("inv"):
-		Hud.change_mode("inv")
-	if Input.is_action_pressed("map"):
+	elif Input.is_action_pressed("inv"):
+		if (PlayerData.global.gear_active[2].name == "Quick_Changer"):
+			Hud.change_mode("inv")
+	elif Input.is_action_pressed("map"):
 		Hud.change_mode("map")
+	if Input.is_action_pressed("heal"):
+		heal()
+		
+	if abs(velo.x) > 20.0:
+		if Hud.mode == "rest":
+			print(velo.x)
+			get_tree().reload_current_scene()
+			#Hud.change_mode("game")
+			
+			
+	if (Hud.mode == "inv" and PlayerData.global.gear_active[2].name != "Quick_Changer"):
+		Hud.change_mode("game")
+
+	if (on_elevator):
+		position.y = current_elevator.position.y * 2 - 40
+
 
 func _physics_process(delta):
 	
@@ -114,7 +169,7 @@ func _physics_process(delta):
 			if Input.is_action_pressed("run_right"):
 				move_vec.x += 1
 				
-			if Input.is_action_pressed("dash") and move_vec != Vector2():
+			if Input.is_action_pressed("dash") and move_vec != Vector2() and !healing_cooldown:
 				if (!attacking and get_cur_time() - dash_timestamp > dash_block):
 					dash_timestamp = get_cur_time()
 					
@@ -142,7 +197,7 @@ func _physics_process(delta):
 		dashed_once = false
 	
 	var will_jump = false
-	var pressed_jump = Input.is_action_just_pressed("jump") and !attacking and !dashing
+	var pressed_jump = Input.is_action_just_pressed("jump") and !attacking and !dashing and !healing_cooldown
 	
 	if pressed_jump:
 		time_pressed_jump = get_cur_time()
@@ -162,7 +217,14 @@ func _physics_process(delta):
 		velo.y += real_grav / 1.25
 	
 	
-		
+#	if (on_elevator):
+#		pass
+#		#velo.y = 0
+#		#position.y = current_elevator.position.y * 2 - 40
+#		#print(current_elevator.position.y * 2)
+#		move_and_slide(get_floor_velocity(), Vector2.UP)
+#
+#	else:
 	move_and_slide(velo, Vector2.UP)
 	
 	if cur_grounded:
@@ -176,15 +238,15 @@ func _physics_process(delta):
 				pass
 			elif velo.y < 3000:
 				$ShakeCamera2D.add_trauma(0.25)
-				stun(0.3, 0.8)
+				stun(0.3, 0.5)
 				play_anim("Stop_Dash")
 			elif velo.y < 4500:
 				$ShakeCamera2D.add_trauma(0.35)
-				stun(0.3, 1)
+				stun(0.3, 0.25)
 				play_anim("Stop_Dash")
 			else:
 				$ShakeCamera2D.add_trauma(0.45)
-				stun(0.3, 1)
+				stun(0.3, 0.1)
 				play_anim("Stop_Dash")
 			
 		if velo.y > 10:
@@ -200,8 +262,8 @@ func _physics_process(delta):
 			flip()
 		elif move_vec.x < 0.0 and facing_right:
 			flip()
-		if cur_grounded:
-			if move_vec == Vector2():
+		if cur_grounded or on_elevator:
+			if move_vec == Vector2() or on_elevator:
 				play_anim("Idle")
 			else:
 				play_anim("Run", 2, move_speed_modifier)
@@ -280,24 +342,36 @@ func dash():
 		set_collision(false)
 		move_speed = dash_speed
 		play_anim("Start_Dash")
-		yield(get_tree().create_timer(dash_duration), "timeout")
+		invoulnerable = true
+		yield(get_tree().create_timer(dash_inv), "timeout")
+		invoulnerable = false
+		yield(get_tree().create_timer(dash_duration - dash_inv), "timeout")
 		
 		if (!dashing or !is_on_floor()):
 			$ShakeCamera2D.smoothing_speed = 5
-			dashing = false
+			
+			set_collision(true)
 			move_speed = normal_speed
+			dashing = false
+#			yield(get_tree().create_timer(dash_end), "timeout")
+#			if (!dashing):
+#				set_collision(true)
+#				return
+#
+#			dashing = false
+			
+		else:
+			
+			$ShakeCamera2D.smoothing_speed = 5
+			play_anim("Stop_Dash")
 			set_collision(true)
-			return
-		$ShakeCamera2D.smoothing_speed = 5
-		play_anim("Stop_Dash")
-		set_collision(true)
-		move_speed = recover_speed
-		yield(get_tree().create_timer(dash_end), "timeout")
-		if (!dashing):
-			set_collision(true)
-			return
-		move_speed = normal_speed
-		dashing = false
+			move_speed = recover_speed
+			yield(get_tree().create_timer(dash_end), "timeout")
+			if (!dashing):
+				set_collision(true)
+				return
+			move_speed = normal_speed
+			dashing = false
 		
 		real_grav = 0
 
@@ -305,7 +379,7 @@ func get_cur_time():
 	return OS.get_ticks_msec() / 1000.0
 
 func set_collision(collide_with_monsters):
-	invoulnerable = !collide_with_monsters
+	#invoulnerable = !collide_with_monsters
 	set_collision_mask_bit(2, collide_with_monsters)
 	
 	
@@ -316,7 +390,7 @@ func flip():
 	facing_right = !facing_right
 	$Collision_Left.disabled = !facing_right
 	$Collision_Right.disabled = facing_right
-	
+	$Heal.position.x *= -1
 #	$hurtbox.get_node("light_left").disabled = !facing_right
 #	$hurtbox.get_node("light_right").disabled = facing_right
 #	$hurtbox.get_node("heavy_left").disabled = !facing_right
@@ -331,6 +405,11 @@ func update_sprite():
 	for c in $Base_Sprite.get_children():
 		c.flip_h = $Base_Sprite.flip_h
 		c.frame = $Base_Sprite.frame
+
+func change_collision(b):
+	$Collision_Left.disabled = !b
+	$Collision_Right.disabled = !b
+
 
 
 func teleport(t, rel=true):

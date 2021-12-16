@@ -42,12 +42,15 @@ func set_active_info(type):
 	var has_mods = "modifiers" in item
 	if has_mods:
 		mods = "\n\n"
-		for k in PlayerData.global.modifiers:
-			if item["modifiers"].has(k):
-				if item["modifiers"][k] > 1:
-					mods += "Boosts " + PlayerData.global.modifier_names[k] + " By " + str(item["modifiers"][k]) + "  "
-				else:
-					mods += "Lessens " + PlayerData.global.modifier_names[k] + " By " + str(1 - item["modifiers"][k]) + "  "
+		if typeof(item["modifiers"]) == TYPE_STRING:
+			mods += item["modifiers"]
+		else:
+			for k in PlayerData.global.modifiers:
+				if item["modifiers"].has(k):
+					if item["modifiers"][k] > 1:
+						mods += "Boosts " + PlayerData.global.modifier_names[k] + " By " + str(item["modifiers"][k]) + "  "
+					else:
+						mods += "Lessens " + PlayerData.global.modifier_names[k] + " By " + str(1 - item["modifiers"][k]) + "  "
 	match item.type:
 		"sword":
 			text = name + "\n\nDamage: " + str(item.dmg_light) + "\nHeavy: " + str(item.dmg_heavy) + "\nWeight: " + str(item.weight) + mods
@@ -69,12 +72,15 @@ func set_info(item):
 	var has_mods = "modifiers" in item
 	if has_mods:
 		mods = "\n\n"
-		for k in PlayerData.global.modifiers:
-			if item["modifiers"].has(k):
-				if item["modifiers"][k] > 1:
-					mods += "Boosts " + PlayerData.global.modifier_names[k] + " By " + str(item["modifiers"][k]) + "  "
-				else:
-					mods += "Lessens " + PlayerData.global.modifier_names[k] + " By " + str(1 - item["modifiers"][k]) + "  "
+		if typeof(item["modifiers"]) == TYPE_STRING:
+			mods += item["modifiers"]
+		else:
+			for k in PlayerData.global.modifiers:
+				if item["modifiers"].has(k):
+					if item["modifiers"][k] > 1:
+						mods += "Boosts " + PlayerData.global.modifier_names[k] + " By " + str(item["modifiers"][k]) + "  "
+					else:
+						mods += "Lessens " + PlayerData.global.modifier_names[k] + " By " + str(1 - item["modifiers"][k]) + "  "
 	match item.type:
 		"sword":
 			comp = PlayerData.global.gear_active[0]
@@ -158,3 +164,9 @@ func _on_active_mouse_entered():
 		get_tree().call_group("icons", "set_target",self)
 
 
+
+
+func _on_exit_pressed():
+	PlayerData.s(PlayerData.player.position)
+	get_tree().reload_current_scene()
+	#Hud.change_mode("game")

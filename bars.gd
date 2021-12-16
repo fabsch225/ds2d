@@ -3,6 +3,10 @@ extends Control
 onready var health = $health
 onready var stamina = $stamina
 
+onready var heals = $TextureRect/heals
+onready var coins = $TextureRect/coins
+
+
 onready var health_end = $TextureRect/health_filled_end
 onready var stamina_end = $TextureRect/stamina_filled_end
 
@@ -53,6 +57,10 @@ func syncronise():
 
 	
 func set_bars(hp, st):
+	heals.text = str(PlayerData.player.healings)
+	coins.text = str(PlayerData.global.points)
+	
+	
 	current_health = hp
 	current_stamina = st
 	
@@ -88,8 +96,8 @@ func upgrade(hp, st):
 	stamina.rect_scale.x = current_max_stamina_length / default_max_stamina_length
 
 
-	$TextureRect/health_empty_end.rect_position.x =  float(31) + 42 * health.rect_scale.x + (5 * (health.rect_scale.x - 1))
-	$TextureRect/health_filled_end.rect_position.x =  float(31) + 42 * health.rect_scale.x + (5 * (health.rect_scale.x - 1))
+	$TextureRect/health_empty_end.rect_position.x =  float(30) + 42 * health.rect_scale.x + (5 * (health.rect_scale.x - 1))
+	$TextureRect/health_filled_end.rect_position.x =  float(30) + 42 * health.rect_scale.x + (5 * (health.rect_scale.x - 1))
 	
-	$TextureRect/stamina_empty_end.rect_position.x =  float(31) + 42 * stamina.rect_scale.x + (5 * (stamina.rect_scale.x - 1))
-	$TextureRect/stamina_filled_end.rect_position.x =  float(31) + 42 * stamina.rect_scale.x + (5 * (stamina.rect_scale.x - 1))
+	$TextureRect/stamina_empty_end.rect_position.x =  float(30) + 42 * stamina.rect_scale.x + (5 * (stamina.rect_scale.x - 1))
+	$TextureRect/stamina_filled_end.rect_position.x =  float(30) + 42 * stamina.rect_scale.x + (5 * (stamina.rect_scale.x - 1))

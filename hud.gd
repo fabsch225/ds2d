@@ -5,6 +5,11 @@ onready var pause = $pause
 onready var inv = $inv
 onready var camp_fire = $camp_fire
 onready var rest = $rest
+onready var boss = $Boss
+onready var use_elevator = $use_elevator
+onready var call_elevator = $call_elevator
+onready var chest = $chest
+onready var chest_prompt = $chest_prompt
 
 onready var tip = $pause/HBoxContainer/VBoxContainer2/tip
 
@@ -13,6 +18,8 @@ var cooldown = false
 
 func _ready():
 	pass
+#	yield((get_tree().create_timer(0.5)), "timeout")
+#	change_mode("game")
 
 func reset():
 	var children = get_children()
@@ -46,6 +53,7 @@ func change_mode(t=null, skip=false):
 					if (camp_fire.act):
 						camp_fire.visible = true
 				"rest":
+					#get_tree().call_group("enemy", "die")
 					rest.visible = true
 					get_tree().call_group("icons", "set_target",rest)
 		else:

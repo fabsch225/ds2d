@@ -26,12 +26,15 @@ func set_info(item):
 	var has_mods = "modifiers" in item
 	if has_mods:
 		mods = "\n"
-		for k in PlayerData.global.modifiers:
-			if item["modifiers"].has(k):
-				if item["modifiers"][k] > 1:
-					mods += "Boosts " + PlayerData.global.modifier_names[k] + " By " + str(item["modifiers"][k]) + "  "
-				else:
-					mods += "Lessens " + PlayerData.global.modifier_names[k] + " By " + str(1 - item["modifiers"][k]) + "  "
+		if typeof(item["modifiers"]) == TYPE_STRING:
+			mods += item["modifiers"]
+		else:
+			for k in PlayerData.global.modifiers:
+				if item["modifiers"].has(k):
+					if item["modifiers"][k] > 1:
+						mods += "Boosts " + PlayerData.global.modifier_names[k] + " By " + str(item["modifiers"][k]) + "  "
+					else:
+						mods += "Lessens " + PlayerData.global.modifier_names[k] + " By " + str(1 - item["modifiers"][k]) + "  "
 	match item.type:
 		"sword":
 			info.text = name + "\nDamage: " + str(item.dmg_light) + "\nHeavy: " + str(item.dmg_heavy) + "\nWeight: " + str(item.weight) + mods

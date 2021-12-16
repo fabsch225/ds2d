@@ -65,5 +65,7 @@ func damage(d):
 	
 	for b in bodies:
 		if b.is_in_group("enemy"):
+			
+			
 			print(b, d, "damage dealt")
 			b.dmg(d)

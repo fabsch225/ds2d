@@ -1,10 +1,14 @@
 extends Node
 var player
 
+var deff_debuff = 0.875
+
+
 func _ready():
-	print(to_json(save_data))
-	print(inv_to_text(global.gear_active))
-	print(inv_to_text(inv_to_text(global.gear_active), true))
+	pass
+#	print(to_json(save_data))
+#	print(inv_to_text(global.gear_active))
+#	print(inv_to_text(inv_to_text(global.gear_active), true))
 	
 func start():
 	reset_modifiers()
@@ -26,7 +30,7 @@ func heal(h):
 func stamina_dash():
 	var buffer = 10
 	var endourance_factor = (global.stats.endourance / global.default_stats.endourance)
-	player.stamina -= (8 + ((global.weight - 100) / float(buffer))) / float(endourance_factor)
+	player.stamina -= (15 + ((global.weight - 100) / float(buffer))) / float(endourance_factor)
 	
 	normalize_stamina()
 	
@@ -41,7 +45,7 @@ func stamina_light():
 func stamina_jump():
 	var buffer = 8
 	var endourance_factor = (global.stats.endourance / global.default_stats.endourance)
-	player.stamina -= (3 + ((global.weight - 100) / float(buffer))) / float(endourance_factor)
+	player.stamina -= (7 + ((global.weight - 100) / float(buffer))) / float(endourance_factor)
 
 	normalize_stamina()
 	
@@ -54,8 +58,8 @@ func stamina_heavy():
 	normalize_stamina()
 	
 func normalize_stamina():
-	if (player.stamina < -15):
-		player.stamina = -15
+	if (player.stamina < -35):
+		player.stamina = -35
 
 func change_gear(stored_index, active_index):
 	var active_d = global.gear_active[active_index]
@@ -105,13 +109,13 @@ func sync_stats():
 	var accs = global.gear_active[2]		#ignore for now
 	
 	player.health = global.stats.health
-	player.stamina = 0#global.stats.stamina
+	player.stamina = global.stats.stamina / 2
+	player.healings = global.healings
 	
-	
-	global.dmg_light = sword.dmg_light * 1 + ((global.stats.strength - global.default_stats.strength) / global.default_stats.strength) / 2
-	global.dmg_heavy = sword.dmg_heavy * 1 + ((global.stats.strength - global.default_stats.strength) / global.default_stats.strength) / 2
-	global.defense = armor.defense * global.modifiers["defense"]
-	
+	global.dmg_light = sword.dmg_light * (1 + ((global.stats.strength - global.default_stats.strength) / global.default_stats.strength) / 2)
+	global.dmg_heavy = sword.dmg_heavy * (1 + ((global.stats.strength - global.default_stats.strength) / global.default_stats.strength) / 2)
+	global.defense = armor.defense * global.modifiers["defense"] * deff_debuff
+	print("Damage: ", global.dmg_light, global.dmg_heavy)
 	global.weight = armor.weight + sword.weight
 	global.weight *= global.modifiers["weight"]
 	
@@ -203,6 +207,7 @@ func convert_savedata(revert=false, position=player.position):
 		global.gear_stored = inv_to_text(save_data.gear_stored, true)
 		global.gear_active = inv_to_text(save_data.gear_active, true)
 		global.points = save_data.points		#the rest can be automated; doesnt make sense for 2 items
+		global.healings = save_data.healings
 		global.pure_stats = save_data.pure_stats
 		
 		var arr = save_data.pos.split(',')
@@ -210,10 +215,77 @@ func convert_savedata(revert=false, position=player.position):
 		var y = int(arr[1])
 		
 		player.position = Vector2(x,y)
+		
+		var cs = get_tree().get_nodes_in_group("chest")
+		var index = 0;
+		for c in cs:
+			if (index >= len(save_data.chests)):
+				break
+			var items = save_data.chests[index]
+			c.items = items
+			c.fill(items)
+		
+		var els = get_tree().get_nodes_in_group("elevators")
+		index = 0
+		for e in els:
+			if (index >= len(save_data.elevators)):
+				break
+			var state = save_data.elevators[index]
+			if e.at_b != state:
+				e.at_b *= -1
+				e.sync_position()
+			index += 1
+		
+		var ds = get_tree().get_nodes_in_group("doors")
+		index = 0
+		print(save_data.doors[index], "Doors")
+		for d in ds:
+			if (index >= len(save_data.doors)):
+				break
+			var state = save_data.doors[index]
+			if d.open != state:
+				d.open()
+			index += 1
+		
+		
+		if (global.gear_active[2] == gear.Suspicious_Ring):
+			return
+		var bosses = get_tree().get_nodes_in_group("perm_death")
+		index = 0
+		print(save_data.perm_dead, "Bosses")
+		for b in bosses:
+			
+			if (index < len(save_data.perm_dead) and save_data.perm_dead[index]):
+				print(b.name)
+				b.die()
+				b.hp = 0
+				b.Php = 0
+				b.set_collision_layer_bit(2, 0)
+			index += 1
 	else:
+		save_data.chests = [];
+		var cs = get_tree().get_nodes_in_group("chest")
+		for c in cs:
+			save_data.chests.append(c.items)
+		
+		save_data.elevators = []
+		var els = get_tree().get_nodes_in_group("elevators")
+		for el in els:
+			save_data.elevators.append(el.at_b)
+		save_data.doors = []
+		for d in get_tree().get_nodes_in_group("doors"):
+			save_data.doors.append(d.open)
+			print("Door ", d.open)
+		save_data.perm_dead = []
+		var bosses = get_tree().get_nodes_in_group("perm_death")
+		for b in bosses:
+			print(b.name, b.state)
+			save_data.perm_dead.append(b.state == 1)
+		
 		save_data.gear_stored = inv_to_text(global.gear_stored)
 		save_data.gear_active = inv_to_text(global.gear_active)
 		save_data.points = global.points		#the rest can be automated; doesnt make sense for 2 items
+		save_data.healings = global.healings
 		save_data.pure_stats = global.pure_stats
 		
 		save_data.pos = position
@@ -235,13 +307,42 @@ func l():
 	start()
 
 var gear = {
+	Ghost_Armor = {
+		i = 15,
+		type = "armor",
+		name = "Ghost_Armor",
+		defense = 22,
+		weight = 1,
+	},
+	Samurai_Armor = {
+		i = 14,
+		type = "armor",
+		name = "Samurai_Armor",
+		defense = 55,
+		weight = 70,
+	},
+	Mantis_Armor = {
+		i = 13,
+		type = "armor",
+		name = "Mantis_Armor",
+		defense = 39,
+		weight = 34,
+	},
+	Katana = {
+		i = 12,
+		type = "sword",
+		name = "Katana",
+		dmg_light = 60,
+		dmg_heavy = 70,
+		weight = 28,
+	},
 	Iron_Sword = {
 		i = 7,
 		type = "sword",
 		name = "Iron_Sword",
 		dmg_light = 50,
 		dmg_heavy = 80,
-		weight = 30,
+		weight = 40,
 	},
 	
 	Black_Sword = {
@@ -259,7 +360,7 @@ var gear = {
 		name = "Crystal_Sword",
 		dmg_light = 80,
 		dmg_heavy = 90,
-		weight = 40,
+		weight = 52,
 	},
 	
 	Wooden_Sword = {
@@ -268,7 +369,7 @@ var gear = {
 		name = "Wooden_Sword",
 		dmg_light = 30,
 		dmg_heavy = 50,
-		weight = 10,
+		weight = 20,
 	},
 	
 	Golden_Sword  = {
@@ -277,30 +378,30 @@ var gear = {
 		name = "Golden_Sword",
 		dmg_light = 20,
 		dmg_heavy = 160,
-		weight = 40,
+		weight = 55,
 	},
 	
 	Iron_Armor = {
 		i = 0,
 		type = "armor",
 		name = "Iron_Armor",
-		defense = 40,
-		weight = 70,
+		defense = 35,
+		weight = 60,
 	},
 	
 	Black_Armor = {
 		i = 1,
 		type = "armor",
 		name = "Black_Armor",
-		defense = 60,
-		weight = 120,
+		defense = 45,
+		weight = 70,
 	},
 	
 	Crystal_Armor = {
 		i = 2,
 		type = "armor",
 		name = "Crystal_Armor",
-		defense = 60,
+		defense = 50,
 		weight = 90,
 	},
 	
@@ -335,7 +436,7 @@ var gear = {
 		i = 6,
 		type = "armor",
 		name = "Stone_Armor",
-		defense = 90,
+		defense = 70,
 		weight = 150,
 	},
 	
@@ -344,7 +445,7 @@ var gear = {
 		type = "accs",
 		name = "Simple_Ring",
 		modifiers = {
-			"stamina_regen" : 1.2,
+			"stamina_regen" : 1.1,
 		}
 	},
 	Better_Ring  = {
@@ -352,7 +453,7 @@ var gear = {
 		type = "accs",
 		name = "Better_Ring",
 		modifiers = {
-			"stamina_regen" : 1.4,
+			"stamina_regen" : 1.25,
 		}
 	},
 	Healthy_Ring = {
@@ -380,7 +481,7 @@ var gear = {
 		modifiers = {
 			"defense" : 0.25,
 			"health": 0.5,
-			"strength": 3,
+			"strength": 1.8,
 		}
 	},
 	Heavy_Lifter  = {
@@ -388,7 +489,7 @@ var gear = {
 		type = "accs",
 		name = "Heavy_Lifter",
 		modifiers = {
-			"weight": 0.7,
+			"weight": 0.8,
 		}
 	},
 	The_Ring_Of_The_Snake = {
@@ -407,13 +508,45 @@ var gear = {
 		modifiers = {
 			"gravity": 0.7
 		}
-	}
+	},
+	Quick_Changer = {
+		i = 23,
+		type = "accs",
+		name = "Quick_Changer",
+		modifiers = "Allows changing Items anywhere (with TAB)",
+	},
+	Suspicious_Ring = {
+		i = 20,
+		type = "accs",
+		name = "Suspicious_Ring",
+		modifiers = "Somthing evil happens"
+	},
 }
 
+var gear_accses = [gear.Iron_Sword, gear.Black_Sword, 
+gear.Crystal_Sword, gear.Wooden_Sword,
+gear.Katana, gear.Golden_Sword, 
+gear.Iron_Armor, gear.Black_Armor, 
+gear.Crystal_Armor, gear.Fabric_Suit, 
+gear.Neon_Suit, gear.Ninja_Suit, 
+gear.Stone_Armor,gear.Samurai_Armor, 
+gear.Mantis_Armor,gear.Ghost_Armor,
+gear.Simple_Ring, gear.Better_Ring, 
+gear.Healthy_Ring, gear.Ring_of_Tank, 
+gear.Stabber, gear.Heavy_Lifter,
+gear.The_Ring_Of_The_Snake, gear.Ring_Of_Mobility, 
+gear.Quick_Changer, gear.Suspicious_Ring
+]
+
 var save_data = {
+	perm_dead = [false, false, true, false],
+	elevators = [-1, -1, 1, 1],
+	doors = [false, false, true, false],
+	
 	gear_stored = "Text",
 	gear_active = "Text",
 	points = 100,	
+	healings = 4,
 
 	position = Vector2(0,0),
 
@@ -428,16 +561,19 @@ var save_data = {
 }
 
 var global = {
-	gear_stored = [gear.Black_Sword, gear.Iron_Armor,gear.Neon_Suit,gear.Iron_Sword, 
-	gear.Golden_Sword, gear.Stone_Armor, gear.Crystal_Sword, gear.Crystal_Armor, gear.Fabric_Suit, gear.Ninja_Suit,
-	gear.Simple_Ring, gear.Better_Ring, gear.Healthy_Ring, gear.Ring_of_Tank, gear.Stabber, gear.Heavy_Lifter,
-	gear.Heavy_Lifter,gear.The_Ring_Of_The_Snake, gear.Ring_Of_Mobility, gear.Wooden_Sword 
-	],
+	gear_stored = [gear.Iron_Sword, gear.Black_Sword, 
+gear.Crystal_Sword, gear.Wooden_Sword,gear.Katana, gear.Golden_Sword, gear.Iron_Armor, 
+gear.Black_Armor, gear.Crystal_Armor, gear.Fabric_Suit, gear.Neon_Suit, gear.Ninja_Suit, gear.Stone_Armor,gear.Samurai_Armor, gear.Mantis_Armor,
+gear.Simple_Ring, gear.Better_Ring, gear.Healthy_Ring, gear.Ring_of_Tank, gear.Stabber, gear.Heavy_Lifter,
+gear.The_Ring_Of_The_Snake, gear.Ring_Of_Mobility, gear.Quick_Changer, gear.Suspicious_Ring
+],
 	
 	#gear_active = [gear.Black_Sword, gear.Stone_Armor,gear.Iron_Armor],
-	gear_active = [gear.Golden_Sword, gear.Neon_Suit,gear.Ring_Of_Mobility],
+	gear_active = [gear.Golden_Sword, gear.Neon_Suit,gear.Quick_Changer],
 	
 	points = 166,
+	healings = 8,
+	
 	
 	dmg_light = 50,
 	dmg_heavy = 150,
@@ -450,7 +586,7 @@ var global = {
 	stats = {
 		"health" : 100,
 		"stamina" : 100,
-		"healing" : 20,
+		"healing" : 30,
 		"strength" : 100,
 		"endourance" : 100,
 		"agility" : 100,
@@ -459,8 +595,8 @@ var global = {
 	pure_stats = {
 		"health" : 100,
 		"stamina" : 100,
-		"healing" : 20,
-		"strength" : 300,
+		"healing" : 30,
+		"strength" : 100,
 		"endourance" : 100,
 		"agility" : 100,
 	},
@@ -468,7 +604,7 @@ var global = {
 	default_stats = {
 		"health" : 100,
 		"stamina" : 100,
-		"healing" : 20,
+		"healing" : 30,
 		"strength" : 100,
 		"endourance" : 100,
 		"agility" : 100,
@@ -476,7 +612,7 @@ var global = {
 	max_stats = {
 		"health" : 300,
 		"stamina" : 300,
-		"healing" : 50,
+		"healing" : 60,
 		"strength" : 300,
 		"endourance" : 300,
 		"agility" : 150,
@@ -492,7 +628,7 @@ var global = {
 	},
 	
 	modifiers = {
-		"stamina_regen": 0.08,	#per second
+		"stamina_regen": 0.095,	#per second ; was 0.08
 		
 		"health" : 1,
 		"stamina" : 1,
@@ -535,8 +671,6 @@ var global = {
 		"weight": "Carrying Burden",
 		"gravity": "Falling",
 	}
-	
-	
 }
 
 var tips = [
