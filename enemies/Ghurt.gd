@@ -12,11 +12,18 @@ func attck(right):
 	$left.disabled = right
 	$right.disabled = !right
 
-	yield(get_tree().create_timer(0.02), "timeout")
-	if get_parent().state != 1:
-		damage(d)
+	print(right, !get_parent().get_node("AnimatedSprite").flip_h)
 
+	#$left.visible = !get_parent().facing_right
+	#$right.visible = get_parent().facing_right
+	
+	yield(get_tree().create_timer(0.02), "timeout")
+	damage(d)
+		
+	#yield(get_tree().create_timer(0.5), "timeout")
+	#disable_visibility()
 	disable_all()
+
 
 func disable_all():
 	$left.disabled = true
@@ -30,7 +37,8 @@ func disable_visibility():
 	
 
 func damage(d):
-	
+	if get_parent().state == 1:
+		return
 	if overlaps_body(get_parent().player):
 		print("Hitting Player")
 		get_parent().player.damage(d)
