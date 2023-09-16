@@ -1,0 +1,326 @@
+[gd_scene load_steps=61 format=2]
+
+[ext_resource path="res://enemie_sprites/Boss1/skeleton_skeleton_attack.png" type="Texture" id=1]
+[ext_resource path="res://enemie_sprites/Boss1/skeleton_seeker_walk.png" type="Texture" id=2]
+[ext_resource path="res://enemie_sprites/Skeletron/Shield.png" type="Texture" id=3]
+[ext_resource path="res://enemie_sprites/Boss1/skeleton_seeker_idle.png" type="Texture" id=5]
+[ext_resource path="res://enemie_sprites/Skeletron/Take Hit.png" type="Texture" id=6]
+[ext_resource path="res://enemies/boss1.gd" type="Script" id=7]
+[ext_resource path="res://enemies/hurt.gd" type="Script" id=8]
+[ext_resource path="res://enemie_sprites/Boss1/skeleton_seeker_death.png" type="Texture" id=10]
+[ext_resource path="res://enemie_sprites/Boss1/skeleton_seeker_spawn.png" type="Texture" id=11]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 24.802
+height = 29.3077
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 120, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 240, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 360, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 480, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 600, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 240, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 360, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 150, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 300, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 450, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 120, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 240, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 360, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 480, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 600, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 3 )
+region = Rect2( 150, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 3 )
+region = Rect2( 300, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 3 )
+region = Rect2( 450, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 120, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 240, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 360, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 480, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 120, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 240, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 360, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 480, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 600, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 720, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 840, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 960, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1080, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 120, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 240, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 360, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 480, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 600, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 720, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 840, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 960, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 1080, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 1200, 120, 120 )
+
+[sub_resource type="SpriteFrames" id=51]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": false,
+"name": "Shoot",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": false,
+"name": "Take_Hit",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"loop": true,
+"name": "Shield",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 16 ), SubResource( 16 ), SubResource( 16 ), SubResource( 16 ), SubResource( 16 ), SubResource( 16 ), SubResource( 16 ), SubResource( 16 ), SubResource( 17 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 39 ) ],
+"loop": true,
+"name": "Sleep",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": true,
+"name": "Intro",
+"speed": 5.0
+} ]
+
+[node name="Skel_Boss" type="KinematicBody2D" groups=["enemy", "need_player_ref"]]
+position = Vector2( 0, 1 )
+scale = Vector2( 2, 2 )
+z_index = 10
+collision_layer = 12
+script = ExtResource( 7 )
+
+[node name="hurt" type="Area2D" parent="."]
+position = Vector2( -1.74069, -23.9015 )
+script = ExtResource( 8 )
+
+[node name="right" type="CollisionPolygon2D" parent="hurt"]
+polygon = PoolVector2Array( 56.8546, 43.63, 60.2978, 14.0975, 58.7086, 0.456871, 56.4573, -8.94587, 52.4843, -20.3351, 49.9496, -28.4285, 48.1256, -33.4796, 45.8807, -37.8292, 38.8653, -45.1252, 17.1176, -51.0181, 6.73484, -49.615, 5.36703, -26.9113, 18.3877, 0.576856, 14.8664, -0.369153, 8.00049, 0.681194, -0.897699, 4.69719, 3.90575, 8.94943, 1.99069, 44.1515, 15.7407, 43.9015, 19.2407, 44.4015, 34.7407, 44.4015, 46.4907, 44.6515 )
+disabled = true
+
+[node name="left" type="CollisionPolygon2D" parent="hurt"]
+polygon = PoolVector2Array( 1.24069, 44.6515, -57.942, 43.5627, -60.5698, 30.2135, -61.7261, 18.2307, -60.0443, 12.1343, -59.2034, 7.50932, -56.7859, -12.1466, -52.0558, -23.8141, -45.8542, -32.4332, -33.451, -44.3109, -21.3631, -51.9841, -12.1133, -51.4585, -17.5094, -24.9711, -21.0814, -0.216724, -15.625, -1.625, -2.9375, 4.25 )
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Shoot" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Collision_Right" type="CollisionShape2D" parent="."]
+position = Vector2( -1.74069, -19.8205 )
+shape = SubResource( 1 )
+
+[node name="Collision_Left" type="CollisionShape2D" parent="."]
+position = Vector2( -1.74069, -19.8205 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1.1666, 9.09141 )
+scale = Vector2( 0.324866, 0.425788 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -3.09685, -26.0579 )
+frames = SubResource( 51 )
+animation = "Idle"
+playing = true
+flip_h = true
+
+[node name="top" type="Node2D" parent="."]
+position = Vector2( -2.0744, -1.20928 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -1.74069, -23.9015 )
+enabled = true
+collision_mask = 31
+
+[node name="muzzle" type="Node2D" parent="."]
+position = Vector2( -1.74069, -23.9015 )
+
+[node name="left" type="Node2D" parent="muzzle"]
+position = Vector2( -0.15353, -3.5976 )
+
+[node name="right" type="Node2D" parent="muzzle"]
+position = Vector2( -0.287092, -3.57307 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Shoot" to="." method="_on_Shoot_timeout"]

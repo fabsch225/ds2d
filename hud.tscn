@@ -1,0 +1,2237 @@
+[gd_scene load_steps=89 format=2]
+
+[ext_resource path="res://UI/progress_background.png" type="Texture" id=1]
+[ext_resource path="res://UI/code/bars.gd" type="Script" id=2]
+[ext_resource path="res://hud.gd" type="Script" id=3]
+[ext_resource path="res://UI/stamina_progress.png" type="Texture" id=4]
+[ext_resource path="res://UI/health_progress.png" type="Texture" id=5]
+[ext_resource path="res://UI/stamina_bar_filled_end.png" type="Texture" id=6]
+[ext_resource path="res://UI/health_bar_end_filled.png" type="Texture" id=7]
+[ext_resource path="res://UI/stamina_bar_end.png" type="Texture" id=8]
+[ext_resource path="res://UI/gui1.png" type="Texture" id=9]
+[ext_resource path="res://UI/pause/pause_title.png" type="Texture" id=10]
+[ext_resource path="res://UI/pause/pause_background.png" type="Texture" id=11]
+[ext_resource path="res://UI/pause/button.png" type="Texture" id=12]
+[ext_resource path="res://UI/Font/MinimalPixel v2.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://UI/pause/button_behindert.png" type="Texture" id=14]
+[ext_resource path="res://UI/pause/button_hover.png" type="Texture" id=15]
+[ext_resource path="res://UI/pause/large_text_field.png" type="Texture" id=16]
+[ext_resource path="res://UI/pause/text_field.png" type="Texture" id=17]
+[ext_resource path="res://UI/code/tip.gd" type="Script" id=18]
+[ext_resource path="res://UI/pause/reload_button.png" type="Texture" id=19]
+[ext_resource path="res://UI/pause/reload_button_hover.png" type="Texture" id=20]
+[ext_resource path="res://UI/pause/reload_button_pressed.png" type="Texture" id=21]
+[ext_resource path="res://UI/pause/butoon_pressed.png" type="Texture" id=22]
+[ext_resource path="res://UI/code/menu.gd" type="Script" id=23]
+[ext_resource path="res://UI/inv/mobile_inv_background.png" type="Texture" id=24]
+[ext_resource path="res://UI/inv/container.png" type="Texture" id=25]
+[ext_resource path="res://Icons/icons.png" type="Texture" id=26]
+[ext_resource path="res://UI/code/active.gd" type="Script" id=27]
+[ext_resource path="res://UI/code/stored.gd" type="Script" id=28]
+[ext_resource path="res://UI/code/inv.gd" type="Script" id=29]
+[ext_resource path="res://UI/code/ScrollContainer.gd" type="Script" id=30]
+[ext_resource path="res://UI/inv/scroll_grabber_1.png" type="Texture" id=31]
+[ext_resource path="res://UI/inv/scroll_grabber_2.png" type="Texture" id=32]
+[ext_resource path="res://UI/scroll_container.tres" type="Theme" id=33]
+[ext_resource path="res://UI/code/rest_slide.gd" type="Script" id=34]
+[ext_resource path="res://UI/rest/button_right_disabled.png" type="Texture" id=35]
+[ext_resource path="res://UI/code/grid.gd" type="Script" id=36]
+[ext_resource path="res://UI/inv/text_field.png" type="Texture" id=37]
+[ext_resource path="res://UI/camp_fire/camp_bg.png" type="Texture" id=38]
+[ext_resource path="res://camp_fire.gd" type="Script" id=39]
+[ext_resource path="res://UI/rest/rest_bg.png" type="Texture" id=40]
+[ext_resource path="res://UI/rest/rest_title.png" type="Texture" id=41]
+[ext_resource path="res://UI/rest/button_left.png" type="Texture" id=42]
+[ext_resource path="res://UI/rest/button_left_pressed.png" type="Texture" id=43]
+[ext_resource path="res://UI/rest/button_right_pressed.png" type="Texture" id=44]
+[ext_resource path="res://UI/rest/button_right.png" type="Texture" id=45]
+[ext_resource path="res://UI/code/rest.gd" type="Script" id=46]
+[ext_resource path="res://UI/rest/textfield1.png" type="Texture" id=47]
+[ext_resource path="res://Icons/Icon.tscn" type="PackedScene" id=48]
+[ext_resource path="res://UI/code/active_big.gd" type="Script" id=49]
+[ext_resource path="res://UI/code/stored_big.gd" type="Script" id=50]
+[ext_resource path="res://UI/rest/button_exit.png" type="Texture" id=51]
+[ext_resource path="res://UI/rest/button_exit_pressed.png" type="Texture" id=52]
+[ext_resource path="res://UI/Boss/bar_background.png" type="Texture" id=53]
+[ext_resource path="res://UI/Boss/bar_base.png" type="Texture" id=54]
+[ext_resource path="res://Boss.gd" type="Script" id=55]
+[ext_resource path="res://UI/elevator/elevator_bg.png" type="Texture" id=56]
+[ext_resource path="res://use_elevator.gd" type="Script" id=57]
+[ext_resource path="res://call_elevator.gd" type="Script" id=58]
+[ext_resource path="res://UI/code/items.gd" type="Script" id=59]
+[ext_resource path="res://UI/code/chest_grid.gd" type="Script" id=60]
+[ext_resource path="res://UI/code/chest.gd" type="Script" id=61]
+[ext_resource path="res://UI/code/chest_prompt.gd" type="Script" id=62]
+[ext_resource path="res://UI/rest/button_left_disabled.png" type="Texture" id=63]
+[ext_resource path="res://UI/code/stored_crafting.gd" type="Script" id=64]
+[ext_resource path="res://UI/code/crafting.gd" type="Script" id=65]
+[ext_resource path="res://UI/code/ing.gd" type="Script" id=66]
+[ext_resource path="res://info2.gd" type="Script" id=67]
+[ext_resource path="res://VBoxContainer.gd" type="Script" id=68]
+[ext_resource path="res://list.gd" type="Script" id=69]
+[ext_resource path="res://upgrades.gd" type="Script" id=70]
+[ext_resource path="res://UI/Boss/message_bg.png" type="Texture" id=71]
+
+[sub_resource type="DynamicFont" id=1]
+size = 7
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 10, 42 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 10, 42 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 0, 12, 44 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 10, 42 )
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="Theme" id=19]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 14 )
+VScrollBar/styles/grabber_highlight = SubResource( 15 )
+VScrollBar/styles/grabber_pressed = SubResource( 16 )
+VScrollBar/styles/scroll = SubResource( 17 )
+VScrollBar/styles/scroll_focus = SubResource( 18 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 56
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 14
+font_data = ExtResource( 13 )
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Show"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="bars" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 5, 5 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health" type="TextureProgress" parent="bars"]
+margin_left = 31.0
+margin_top = 4.0
+margin_right = 78.0
+margin_bottom = 11.0
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina" type="TextureProgress" parent="bars"]
+margin_left = 31.0
+margin_top = 10.0
+margin_right = 78.0
+margin_bottom = 17.0
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="bars"]
+margin_left = 4.9
+margin_top = 3.9
+margin_right = 68.9
+margin_bottom = 43.9
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina_empty_end" type="TextureRect" parent="bars/TextureRect"]
+margin_left = 73.0
+margin_top = 6.234
+margin_right = 78.0
+margin_bottom = 13.234
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina_filled_end" type="TextureRect" parent="bars/TextureRect"]
+visible = false
+margin_left = 73.0
+margin_top = 6.44207
+margin_right = 113.0
+margin_bottom = 47.4421
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_empty_end" type="TextureRect" parent="bars/TextureRect"]
+margin_left = 73.0
+margin_top = 0.200227
+margin_right = 77.0
+margin_bottom = 7.20023
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_filled_end" type="TextureRect" parent="bars/TextureRect"]
+visible = false
+margin_left = 73.0
+margin_top = 0.0885522
+margin_right = 113.0
+margin_bottom = 40.0886
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heals" type="RichTextLabel" parent="bars/TextureRect"]
+margin_left = 43.7425
+margin_top = 14.8342
+margin_right = 83.7425
+margin_bottom = 54.8342
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "11"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coins" type="RichTextLabel" parent="bars/TextureRect"]
+margin_left = 11.013
+margin_top = 14.7633
+margin_right = 51.013
+margin_bottom = 54.7633
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "11"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -20.0
+margin_right = 46.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="pause"]
+anchor_left = -10.824
+anchor_top = -5.812
+anchor_right = 1.174
+anchor_bottom = 0.936
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="pause"]
+margin_left = -856.0
+margin_top = -185.0
+margin_right = 242.0
+margin_bottom = 131.0
+custom_constants/separation = 85
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="VBoxContainer" parent="pause/HBoxContainer"]
+margin_right = 320.0
+margin_bottom = 456.0
+custom_constants/separation = 14
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="TextureRect" parent="pause/HBoxContainer/menu"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture = ExtResource( 10 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause/HBoxContainer/menu/title"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -42.0
+margin_top = -14.0
+margin_right = 42.0
+margin_bottom = 14.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Pause"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="resume" type="TextureButton" parent="pause/HBoxContainer/menu"]
+margin_top = 94.0
+margin_right = 320.0
+margin_bottom = 174.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause/HBoxContainer/menu/resume"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.5
+margin_top = -14.0
+margin_right = 54.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Resume"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settings" type="TextureButton" parent="pause/HBoxContainer/menu"]
+margin_top = 188.0
+margin_right = 320.0
+margin_bottom = 268.0
+disabled = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause/HBoxContainer/menu/settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.5
+margin_top = -14.0
+margin_right = 58.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Settings"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="TextureButton" parent="pause/HBoxContainer/menu"]
+margin_top = 282.0
+margin_right = 320.0
+margin_bottom = 362.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause/HBoxContainer/menu/quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = -14.0
+margin_right = 31.0
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Quit"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reload" type="TextureButton" parent="pause/HBoxContainer/menu"]
+margin_top = 376.0
+margin_right = 320.0
+margin_bottom = 456.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause/HBoxContainer/menu/reload"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -126.5
+margin_top = -14.0
+margin_right = 126.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Reload Checkpoint"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="pause/HBoxContainer"]
+margin_left = 405.0
+margin_right = 825.0
+margin_bottom = 456.0
+custom_constants/separation = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="pause/HBoxContainer/VBoxContainer2"]
+margin_right = 420.0
+margin_bottom = 320.0
+texture = ExtResource( 16 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="pause/HBoxContainer/VBoxContainer2/TextureRect"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 420.0
+margin_bottom = 323.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Controls
+
+Move - A / D
+Jump - W
+Attack - Space
+Dash - Shift
+Heal - CTRL
+Pause - Escape
+Inventory - Tab / I
+Map - M"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tip" type="TextureRect" parent="pause/HBoxContainer/VBoxContainer2"]
+margin_top = 334.0
+margin_right = 420.0
+margin_bottom = 454.0
+texture = ExtResource( 17 )
+script = ExtResource( 18 )
+
+[node name="text" type="RichTextLabel" parent="pause/HBoxContainer/VBoxContainer2/tip"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 413.0
+margin_bottom = 111.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Hold shift + A/D while attacking to dash right after"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="pause/HBoxContainer/VBoxContainer2/tip"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -37.2031
+margin_top = -44.0635
+margin_right = 20.7969
+margin_bottom = 11.9365
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inv" type="Control" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 25.0
+margin_top = -163.0
+margin_right = 25.0
+rect_pivot_offset = Vector2( -1056.86, -718.361 )
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="inv"]
+position = Vector2( 48, 48 )
+scale = Vector2( 4, 4 )
+z_index = 1000
+z_as_relative = false
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 5
+
+[node name="TextureRect" type="TextureRect" parent="inv"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -270.0
+margin_right = 645.0
+margin_bottom = 270.0
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="inv/TextureRect"]
+margin_left = 37.0
+margin_top = 40.0
+margin_right = 368.0
+margin_bottom = 124.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="active" type="HBoxContainer" parent="inv/TextureRect/VBoxContainer"]
+margin_right = 569.0
+margin_bottom = 185.0
+script = ExtResource( 27 )
+
+[node name="sword" type="TextureButton" parent="inv/TextureRect/VBoxContainer/active"]
+margin_right = 96.0
+margin_bottom = 185.0
+rect_pivot_offset = Vector2( -463.817, 48 )
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+
+[node name="Icon" type="Sprite" parent="inv/TextureRect/VBoxContainer/active/sword"]
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 11
+
+[node name="armor" type="TextureButton" parent="inv/TextureRect/VBoxContainer/active"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 185.0
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+
+[node name="Icon" type="Sprite" parent="inv/TextureRect/VBoxContainer/active/armor"]
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 4
+
+[node name="accs" type="TextureButton" parent="inv/TextureRect/VBoxContainer/active"]
+margin_left = 200.0
+margin_right = 296.0
+margin_bottom = 185.0
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+
+[node name="Icon" type="Sprite" parent="inv/TextureRect/VBoxContainer/active/accs"]
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+
+[node name="TextureRect" type="TextureRect" parent="inv/TextureRect/VBoxContainer/active"]
+margin_left = 300.0
+margin_right = 569.0
+margin_bottom = 185.0
+texture = ExtResource( 37 )
+
+[node name="text" type="RichTextLabel" parent="inv/TextureRect/VBoxContainer/active/TextureRect"]
+margin_left = 11.0
+margin_top = 8.0
+margin_right = 261.0
+margin_bottom = 176.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Hold shift + A/D while attacking to dash right after"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stored" type="HBoxContainer" parent="inv/TextureRect/VBoxContainer"]
+margin_top = 189.0
+margin_right = 569.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 504, 280 )
+script = ExtResource( 28 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="inv/TextureRect/VBoxContainer/stored"]
+margin_right = 504.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 504, 280 )
+size_flags_vertical = 3
+theme = ExtResource( 33 )
+scroll_horizontal_enabled = false
+script = ExtResource( 30 )
+
+[node name="grid" type="GridContainer" parent="inv/TextureRect/VBoxContainer/stored/ScrollContainer"]
+margin_right = 496.0
+rect_min_size = Vector2( 496, 0 )
+rect_pivot_offset = Vector2( -486.54, 111 )
+size_flags_vertical = 2
+columns = 5
+script = ExtResource( 36 )
+
+[node name="VScrollBar" type="VScrollBar" parent="inv/TextureRect/VBoxContainer/stored"]
+visible = false
+margin_left = 508.0
+margin_right = 520.0
+margin_bottom = 280.0
+custom_styles/grabber_highlight = SubResource( 9 )
+custom_styles/grabber = SubResource( 10 )
+custom_styles/scroll_focus = SubResource( 11 )
+custom_styles/scroll = SubResource( 12 )
+custom_styles/grabber_pressed = SubResource( 13 )
+
+[node name="chest" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -654.0
+margin_top = -560.0
+margin_right = -525.0
+rect_pivot_offset = Vector2( -1056.86, -718.361 )
+script = ExtResource( 61 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="chest"]
+visible = false
+position = Vector2( 48, 48 )
+scale = Vector2( 4, 4 )
+z_index = 1000
+z_as_relative = false
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 5
+
+[node name="TextureRect" type="TextureRect" parent="chest"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -270.0
+margin_right = 645.0
+margin_bottom = 270.0
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chest/TextureRect"]
+margin_left = 31.0
+margin_top = 40.0
+margin_right = 368.0
+margin_bottom = 124.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="interfaceA" type="HBoxContainer" parent="chest/TextureRect/VBoxContainer"]
+margin_right = 593.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 570, 100 )
+rect_pivot_offset = Vector2( -216.698, 30 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="chest/TextureRect/VBoxContainer/interfaceA"]
+margin_right = 320.0
+margin_bottom = 185.0
+
+[node name="takeAll" type="TextureButton" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/takeAll"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Take all Items"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="take" type="TextureButton" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer"]
+margin_top = 84.0
+margin_right = 320.0
+margin_bottom = 164.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/take"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Take Item"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="chest/TextureRect/VBoxContainer/interfaceA"]
+margin_left = 324.0
+margin_right = 593.0
+margin_bottom = 185.0
+texture = ExtResource( 37 )
+
+[node name="text" type="RichTextLabel" parent="chest/TextureRect/VBoxContainer/interfaceA/TextureRect"]
+margin_left = 11.0
+margin_top = 8.0
+margin_right = 261.0
+margin_bottom = 176.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Hold shift + A/D while attacking to dash right after"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="items" type="HBoxContainer" parent="chest/TextureRect/VBoxContainer"]
+margin_top = 189.0
+margin_right = 593.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 504, 280 )
+script = ExtResource( 59 )
+
+[node name="grid" type="GridContainer" parent="chest/TextureRect/VBoxContainer/items"]
+margin_right = 496.0
+rect_min_size = Vector2( 496, 0 )
+rect_pivot_offset = Vector2( -486.54, 111 )
+size_flags_vertical = 2
+columns = 5
+script = ExtResource( 60 )
+
+[node name="camp_fire" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+script = ExtResource( 39 )
+
+[node name="TextureRect" type="TextureRect" parent="camp_fire"]
+margin_left = 25.0
+margin_top = 757.0
+margin_right = 413.0
+margin_bottom = 284.0
+texture = ExtResource( 38 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="camp_fire/TextureRect"]
+margin_left = 45.0
+margin_top = 51.0
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 23
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rest" type="TextureButton" parent="camp_fire/TextureRect/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="camp_fire/TextureRect/VBoxContainer/rest"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Rest (and Save)"
+scroll_active = false
+
+[node name="save" type="TextureButton" parent="camp_fire/TextureRect/VBoxContainer"]
+margin_top = 103.0
+margin_right = 320.0
+margin_bottom = 183.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="camp_fire/TextureRect/VBoxContainer/save"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -14.0
+margin_right = 36.0
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Save
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="use_elevator" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+script = ExtResource( 57 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="use_elevator"]
+margin_left = 25.0
+margin_top = 882.0
+margin_right = 438.0
+margin_bottom = 919.0
+texture = ExtResource( 56 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rest" type="TextureButton" parent="use_elevator/TextureRect"]
+margin_left = 45.0
+margin_top = 46.337
+margin_right = 365.0
+margin_bottom = 126.337
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="use_elevator/TextureRect/rest"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Use Elevator
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chest_prompt" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -466.0
+script = ExtResource( 62 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="chest_prompt"]
+margin_left = 25.0
+margin_top = 882.0
+margin_right = 438.0
+margin_bottom = 919.0
+texture = ExtResource( 56 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="open" type="TextureButton" parent="chest_prompt/TextureRect"]
+margin_left = 45.0
+margin_top = 46.337
+margin_right = 365.0
+margin_bottom = 126.337
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="chest_prompt/TextureRect/open"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Open
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="call_elevator" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+script = ExtResource( 58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="call_elevator"]
+margin_left = 25.0
+margin_top = 882.0
+margin_right = 438.0
+margin_bottom = 919.0
+texture = ExtResource( 56 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rest" type="TextureButton" parent="call_elevator/TextureRect"]
+margin_left = 45.0
+margin_top = 46.686
+margin_right = 365.0
+margin_bottom = 126.686
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="call_elevator/TextureRect/rest"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Use Lever
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rest" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 472.0
+margin_right = 20.0
+margin_bottom = 40.0
+script = ExtResource( 46 )
+
+[node name="Icon" type="Sprite" parent="rest"]
+position = Vector2( 48, 48 )
+scale = Vector2( 4, 4 )
+z_index = 1000
+z_as_relative = false
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 5
+
+[node name="TextureRect" type="TextureRect" parent="rest"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -480.0
+margin_right = 480.0
+margin_bottom = 1080.0
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="rest/TextureRect"]
+margin_top = 42.0
+margin_right = 994.0
+margin_bottom = 162.0
+texture = ExtResource( 41 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="TextureButton" parent="rest/TextureRect/TextureRect"]
+margin_left = 860.812
+margin_top = 12.2664
+margin_right = 916.812
+margin_bottom = 105.266
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 52 )
+
+[node name="Control" type="Control" parent="rest/TextureRect/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = -40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="rest/TextureRect/TextureRect/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -91.1091
+margin_top = -6.36396
+margin_right = 168.891
+margin_bottom = 73.636
+rect_min_size = Vector2( 260, 80 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Inventory"
+scroll_active = false
+
+[node name="arrows" type="HBoxContainer" parent="rest/TextureRect/TextureRect/Control"]
+margin_left = 304.0
+margin_top = 67.0
+margin_right = 480.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="TextureButton" parent="rest/TextureRect/TextureRect/Control/arrows"]
+margin_right = 56.0
+margin_bottom = 93.0
+texture_normal = ExtResource( 45 )
+texture_pressed = ExtResource( 44 )
+texture_disabled = ExtResource( 35 )
+
+[node name="left" type="TextureButton" parent="rest/TextureRect/TextureRect/Control/arrows"]
+margin_left = 60.0
+margin_right = 116.0
+margin_bottom = 93.0
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 43 )
+texture_disabled = ExtResource( 63 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="rest/TextureRect"]
+margin_left = 44.0
+margin_top = 204.0
+margin_right = 933.0
+margin_bottom = 1048.0
+mouse_filter = 2
+theme = ExtResource( 33 )
+scroll_vertical_enabled = false
+script = ExtResource( 34 )
+
+[node name="slide" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer"]
+margin_right = 2686.0
+margin_bottom = 810.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gear" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide"]
+margin_right = 900.0
+margin_bottom = 810.0
+rect_min_size = Vector2( 900, 0 )
+custom_constants/separation = 49
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/gear"]
+margin_right = 900.0
+margin_bottom = 810.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer"]
+margin_right = 480.0
+margin_bottom = 810.0
+custom_constants/separation = 34
+
+[node name="active_big" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 96.0
+script = ExtResource( 49 )
+
+[node name="sword" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( -463.817, 48 )
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/sword"]
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 11
+
+[node name="armor" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 96.0
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/armor"]
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 4
+
+[node name="accs" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big"]
+margin_left = 200.0
+margin_right = 296.0
+margin_bottom = 96.0
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/accs"]
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+
+[node name="stored_big" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 480.0
+margin_bottom = 810.0
+rect_min_size = Vector2( 480, 680 )
+script = ExtResource( 50 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big"]
+margin_right = 460.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 460, 280 )
+size_flags_vertical = 3
+theme = SubResource( 19 )
+scroll_horizontal_enabled = false
+script = ExtResource( 30 )
+
+[node name="grid" type="GridContainer" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer"]
+margin_right = 400.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_vertical = 2
+columns = 4
+script = ExtResource( 36 )
+
+[node name="button" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+
+[node name="button2" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_right = 196.0
+
+[node name="button3" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_right = 296.0
+
+[node name="button4" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_right = 396.0
+
+[node name="button5" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 100.0
+margin_bottom = 196.0
+
+[node name="button6" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 196.0
+margin_bottom = 196.0
+
+[node name="button7" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 296.0
+margin_bottom = 196.0
+
+[node name="button8" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 396.0
+margin_bottom = 196.0
+
+[node name="button9" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 200.0
+margin_bottom = 296.0
+
+[node name="button10" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 196.0
+margin_bottom = 296.0
+
+[node name="button11" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 296.0
+margin_bottom = 296.0
+
+[node name="button12" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 396.0
+margin_bottom = 296.0
+
+[node name="button13" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 300.0
+margin_bottom = 396.0
+
+[node name="button14" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 300.0
+margin_right = 196.0
+margin_bottom = 396.0
+
+[node name="button15" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 300.0
+margin_right = 296.0
+margin_bottom = 396.0
+
+[node name="button16" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 300.0
+margin_right = 396.0
+margin_bottom = 396.0
+
+[node name="button17" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 400.0
+margin_bottom = 496.0
+
+[node name="button18" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 400.0
+margin_right = 196.0
+margin_bottom = 496.0
+
+[node name="VScrollBar" type="VScrollBar" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/stored_big"]
+visible = false
+margin_left = 508.0
+margin_right = 520.0
+margin_bottom = 280.0
+custom_styles/grabber_highlight = SubResource( 9 )
+custom_styles/grabber = SubResource( 10 )
+custom_styles/scroll_focus = SubResource( 11 )
+custom_styles/scroll = SubResource( 12 )
+custom_styles/grabber_pressed = SubResource( 13 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer"]
+margin_left = 484.0
+margin_right = 885.0
+margin_bottom = 810.0
+custom_constants/separation = 51
+
+[node name="general_info" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer2"]
+margin_right = 401.0
+margin_bottom = 365.0
+rect_pivot_offset = Vector2( -823.926, 295 )
+texture = ExtResource( 47 )
+
+[node name="text" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer2/general_info"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -187.048
+margin_top = 11.9567
+margin_right = 193.952
+margin_bottom = 355.957
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+meta_underlined = false
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer2/general_info"]
+position = Vector2( -7.08032, 28.1993 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+offset = Vector2( 83.82, 7.882 )
+hframes = 16
+vframes = 28
+frame = 100
+
+[node name="item_info" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer2"]
+margin_top = 416.0
+margin_right = 401.0
+margin_bottom = 781.0
+texture = ExtResource( 47 )
+
+[node name="text" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer2/item_info"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -187.048
+margin_top = 11.9567
+margin_right = 193.952
+margin_bottom = 355.957
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+meta_underlined = false
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer2/item_info"]
+position = Vector2( -7.08032, 28.1993 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+offset = Vector2( 83.82, 7.882 )
+hframes = 16
+vframes = 28
+frame = 100
+
+[node name="crafting" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide"]
+margin_left = 904.0
+margin_right = 1782.44
+margin_bottom = 810.0
+rect_min_size = Vector2( 878.44, 0 )
+custom_constants/separation = 49
+script = ExtResource( 65 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting"]
+margin_right = 878.0
+margin_bottom = 784.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer"]
+margin_right = 446.0
+margin_bottom = 784.0
+custom_constants/separation = 34
+
+[node name="ing" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer"]
+margin_right = 446.0
+margin_bottom = 80.0
+script = ExtResource( 66 )
+
+[node name="TextureRect" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture = ExtResource( 10 )
+
+[node name="grid" type="GridContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing/TextureRect"]
+margin_left = 15.8
+margin_top = 13.652
+margin_right = 314.8
+margin_bottom = 109.652
+rect_min_size = Vector2( 299, 0 )
+size_flags_vertical = 2
+columns = 2
+script = ExtResource( 36 )
+
+[node name="button" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing/TextureRect/grid" instance=ExtResource( 48 )]
+
+[node name="button2" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing/TextureRect/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_right = 196.0
+
+[node name="result" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing/TextureRect"]
+margin_left = 333.0
+margin_right = 100.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( -463.817, 48 )
+mouse_filter = 1
+texture_normal = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing/TextureRect/result"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 48.074, 47.9983 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+hframes = 16
+vframes = 28
+frame = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 446.0
+margin_bottom = 194.0
+
+[node name="craft" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/HBoxContainer/craft"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.5
+margin_top = -14.0
+margin_right = 115.5
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Craft
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reset" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 324.0
+margin_right = 380.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stored_crafting" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer"]
+margin_top = 228.0
+margin_right = 446.0
+margin_bottom = 761.122
+rect_min_size = Vector2( 430, 533.122 )
+rect_clip_content = true
+script = ExtResource( 64 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting"]
+margin_right = 446.852
+margin_bottom = 533.0
+rect_min_size = Vector2( 446.852, 280 )
+size_flags_vertical = 3
+theme = SubResource( 19 )
+scroll_horizontal_enabled = false
+script = ExtResource( 30 )
+
+[node name="grid" type="GridContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer"]
+margin_right = 400.0
+margin_bottom = 796.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_vertical = 2
+columns = 4
+script = ExtResource( 36 )
+
+[node name="button" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+
+[node name="button2" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_right = 196.0
+
+[node name="button3" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_right = 296.0
+
+[node name="button4" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_right = 396.0
+
+[node name="button5" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 100.0
+margin_bottom = 196.0
+
+[node name="button6" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 196.0
+margin_bottom = 196.0
+
+[node name="button7" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 296.0
+margin_bottom = 196.0
+
+[node name="button8" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 396.0
+margin_bottom = 196.0
+
+[node name="button9" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 200.0
+margin_bottom = 296.0
+
+[node name="button10" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 196.0
+margin_bottom = 296.0
+
+[node name="button11" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 296.0
+margin_bottom = 296.0
+
+[node name="button12" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 396.0
+margin_bottom = 296.0
+
+[node name="button13" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 300.0
+margin_bottom = 396.0
+
+[node name="button14" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 300.0
+margin_right = 196.0
+margin_bottom = 396.0
+
+[node name="button15" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 300.0
+margin_right = 296.0
+margin_bottom = 396.0
+
+[node name="button16" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 300.0
+margin_right = 396.0
+margin_bottom = 396.0
+
+[node name="button17" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 400.0
+margin_bottom = 496.0
+
+[node name="button18" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 400.0
+margin_right = 196.0
+margin_bottom = 496.0
+
+[node name="button19" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 400.0
+margin_right = 296.0
+margin_bottom = 496.0
+
+[node name="button20" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 400.0
+margin_right = 396.0
+margin_bottom = 496.0
+
+[node name="button21" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 500.0
+margin_bottom = 596.0
+
+[node name="button22" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 500.0
+margin_right = 196.0
+margin_bottom = 596.0
+
+[node name="button23" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 500.0
+margin_right = 296.0
+margin_bottom = 596.0
+
+[node name="button24" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 500.0
+margin_right = 396.0
+margin_bottom = 596.0
+
+[node name="button25" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 600.0
+margin_bottom = 696.0
+
+[node name="button26" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 100.0
+margin_top = 600.0
+margin_right = 196.0
+margin_bottom = 696.0
+
+[node name="button27" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 200.0
+margin_top = 600.0
+margin_right = 296.0
+margin_bottom = 696.0
+
+[node name="button28" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_left = 300.0
+margin_top = 600.0
+margin_right = 396.0
+margin_bottom = 696.0
+
+[node name="button29" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting/ScrollContainer/grid" instance=ExtResource( 48 )]
+margin_top = 700.0
+margin_bottom = 796.0
+
+[node name="VScrollBar" type="VScrollBar" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/stored_crafting"]
+visible = false
+margin_left = 508.0
+margin_right = 520.0
+margin_bottom = 280.0
+custom_styles/grabber_highlight = SubResource( 9 )
+custom_styles/grabber = SubResource( 10 )
+custom_styles/scroll_focus = SubResource( 11 )
+custom_styles/scroll = SubResource( 12 )
+custom_styles/grabber_pressed = SubResource( 13 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer"]
+margin_left = 450.0
+margin_right = 851.0
+margin_bottom = 784.0
+custom_constants/separation = 51
+
+[node name="ScrollContainer" type="ScrollContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2"]
+margin_right = 401.0
+margin_bottom = 368.119
+rect_min_size = Vector2( 0, 368.119 )
+mouse_filter = 2
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 806.0
+margin_bottom = 365.0
+
+[node name="info" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer"]
+margin_right = 401.0
+margin_bottom = 365.0
+rect_pivot_offset = Vector2( -1029.26, 203.846 )
+texture = ExtResource( 47 )
+
+[node name="text" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info"]
+margin_left = 13.0
+margin_top = 12.0
+margin_right = 386.0
+margin_bottom = 234.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+meta_underlined = false
+text = "Place a maximum of 2 
+Ingredients to craft an Item
+
+There can be any Quantity 
+of Ingredients
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="recipes" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info"]
+margin_left = 38.0
+margin_top = 240.0
+margin_right = 358.0
+margin_bottom = 320.0
+texture_normal = ExtResource( 10 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info/recipes"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -133.979
+margin_top = -14.0
+margin_right = 190.021
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "View Recipes"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info2" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer"]
+margin_left = 405.0
+margin_right = 806.0
+margin_bottom = 365.0
+rect_pivot_offset = Vector2( -1029.26, 203.846 )
+texture = ExtResource( 47 )
+script = ExtResource( 67 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info2"]
+margin_left = 8.0
+margin_top = 13.0
+margin_right = 393.0
+margin_bottom = 353.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info2/ScrollContainer"]
+script = ExtResource( 68 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item_info" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2"]
+margin_top = 419.0
+margin_right = 401.0
+margin_bottom = 784.0
+texture = ExtResource( 47 )
+
+[node name="text" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/item_info"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -187.048
+margin_top = 11.9567
+margin_right = 193.952
+margin_bottom = 355.957
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+meta_underlined = false
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/item_info"]
+position = Vector2( -7.08032, 28.1993 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 26 )
+offset = Vector2( 83.82, 7.882 )
+hframes = 16
+vframes = 28
+frame = 100
+
+[node name="upgrades" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide"]
+margin_left = 1786.0
+margin_right = 2686.0
+margin_bottom = 810.0
+rect_min_size = Vector2( 900, 0 )
+custom_constants/separation = 9
+script = ExtResource( 70 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgrade" type="HBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/upgrades"]
+margin_right = 900.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 146, 121.622 )
+custom_constants/separation = 22
+
+[node name="TextureRect2" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade"]
+margin_right = 420.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 196, 79.9983 )
+texture = ExtResource( 16 )
+
+[node name="confirm" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2"]
+margin_left = 43.0
+margin_top = 139.0
+margin_right = 363.0
+margin_bottom = 219.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_disabled = ExtResource( 14 )
+
+[node name="info2" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2/confirm"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -121.0
+margin_top = 26.0
+margin_right = 139.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 260, 0 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Confirm Upgrades"
+scroll_active = false
+
+[node name="chancel" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2"]
+margin_left = 41.0
+margin_top = 228.0
+margin_right = 361.0
+margin_bottom = 308.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_disabled = ExtResource( 14 )
+
+[node name="info2" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2/chancel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -119.0
+margin_top = 26.0
+margin_right = 141.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 260, 0 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Chancel Upgrades"
+scroll_active = false
+
+[node name="info" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -192.0
+margin_top = 17.0
+margin_right = 185.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 260, 80 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Available Upgrade-Coins"
+scroll_active = false
+
+[node name="points" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -117.585
+margin_top = 63.8316
+margin_right = 259.415
+margin_bottom = 173.832
+rect_min_size = Vector2( 260, 80 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 21 )
+meta_underlined = false
+text = "144"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade"]
+margin_left = 442.0
+margin_right = 862.0
+margin_bottom = 320.0
+texture = ExtResource( 16 )
+
+[node name="info" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -192.0
+margin_top = 15.0
+margin_right = 195.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 260, 80 )
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Temporary Test Text"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect"]
+margin_left = 21.2134
+margin_top = 121.622
+margin_right = 117.213
+margin_bottom = 217.622
+texture = ExtResource( 25 )
+
+[node name="info2" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -74.4388
+margin_top = 126.459
+margin_right = 185.561
+margin_bottom = 213.459
+rect_min_size = Vector2( 260, 80 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Resetting Skills requires a special essence"
+scroll_active = false
+
+[node name="reset" type="TextureButton" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect"]
+margin_left = 21.3816
+margin_top = 226.288
+margin_right = 341.382
+margin_bottom = 306.288
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_disabled = ExtResource( 14 )
+
+[node name="info2" type="RichTextLabel" parent="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect/reset"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -86.8695
+margin_top = 25.6739
+margin_right = 173.131
+margin_bottom = 105.552
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Reset Skills"
+scroll_active = false
+
+[node name="list" type="VBoxContainer" parent="rest/TextureRect/ScrollContainer/slide/upgrades"]
+margin_top = 329.0
+margin_right = 900.0
+margin_bottom = 329.0
+script = ExtResource( 69 )
+
+[node name="Boss" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+rect_scale = Vector2( 4, 4 )
+script = ExtResource( 55 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Boss"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -42.0
+margin_right = 135.0
+margin_bottom = 16.0
+texture = ExtResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Boss/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -8.0
+margin_right = 127.5
+margin_bottom = 20.0
+texture = ExtResource( 54 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Boss/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -107.0
+margin_top = 4.0
+margin_right = 80.0
+margin_bottom = 19.0
+grow_horizontal = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 20 )
+text = "Fabian"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="message" type="Control" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -639.0
+margin_right = -668.0
+margin_bottom = 40.0
+rect_scale = Vector2( 4, 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="message"]
+anims/RESET = SubResource( 23 )
+anims/Show = SubResource( 22 )
+
+[node name="TextureRect" type="TextureRect" parent="message"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -15.0
+margin_right = 135.0
+margin_bottom = 16.0
+texture = ExtResource( 71 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="message/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -133.0
+margin_top = 2.0
+margin_right = 133.0
+margin_bottom = 62.0
+grow_horizontal = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 20 )
+text = "The Spirit of Dhoxeor The Sorcerer still persists. You must defeat in his heavelny Fortress to escape
+"
+scroll_active = false
+
+[node name="start" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="start"]
+margin_right = 960.0
+margin_bottom = 1080.0
+texture = ExtResource( 40 )
+
+[node name="st" type="TextureButton" parent="start/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -40.0
+margin_right = 160.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="start/TextureRect/st"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -14.0
+margin_right = 84.0
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Start Game
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wipe" type="TextureButton" parent="start/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = 300.0
+margin_right = 160.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="start/TextureRect/wipe"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -14.0
+margin_right = 84.0
+margin_bottom = 14.0
+mouse_filter = 1
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Erase Save
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="pause/HBoxContainer/menu/resume" to="pause/HBoxContainer/menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="pause/HBoxContainer/menu/quit" to="pause/HBoxContainer/menu" method="_on_quit_pressed"]
+[connection signal="pressed" from="pause/HBoxContainer/menu/reload" to="pause/HBoxContainer/menu" method="_on_reload_pressed"]
+[connection signal="pressed" from="pause/HBoxContainer/VBoxContainer2/tip/TextureButton" to="pause/HBoxContainer/VBoxContainer2/tip" method="_on_TextureButton_pressed"]
+[connection signal="mouse_entered" from="inv/TextureRect/VBoxContainer/active" to="inv" method="_on_active_mouse_entered"]
+[connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/sword" to="inv/TextureRect/VBoxContainer/active" method="_on_sword_pressed"]
+[connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/armor" to="inv/TextureRect/VBoxContainer/active" method="_on_armor_pressed"]
+[connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/accs" to="." method="_on_accs_pressed"]
+[connection signal="pressed" from="inv/TextureRect/VBoxContainer/active/accs" to="inv/TextureRect/VBoxContainer/active" method="_on_accs_pressed"]
+[connection signal="pressed" from="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/takeAll" to="chest" method="_on_takeAll_pressed"]
+[connection signal="pressed" from="chest/TextureRect/VBoxContainer/interfaceA/VBoxContainer/take" to="chest" method="_on_take_pressed"]
+[connection signal="pressed" from="camp_fire/TextureRect/VBoxContainer/rest" to="camp_fire" method="_on_rest_pressed"]
+[connection signal="pressed" from="camp_fire/TextureRect/VBoxContainer/save" to="camp_fire" method="_on_save_pressed"]
+[connection signal="pressed" from="use_elevator/TextureRect/rest" to="use_elevator" method="_on_rest_pressed"]
+[connection signal="pressed" from="chest_prompt/TextureRect/open" to="chest_prompt" method="_on_open_pressed"]
+[connection signal="pressed" from="call_elevator/TextureRect/rest" to="call_elevator" method="_on_rest_pressed"]
+[connection signal="pressed" from="rest/TextureRect/TextureRect/exit" to="rest" method="_on_exit_pressed"]
+[connection signal="pressed" from="rest/TextureRect/TextureRect/Control/arrows/right" to="rest/TextureRect/ScrollContainer" method="_on_right_pressed"]
+[connection signal="pressed" from="rest/TextureRect/TextureRect/Control/arrows/left" to="rest/TextureRect/ScrollContainer" method="_on_left_pressed"]
+[connection signal="mouse_entered" from="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big" to="rest" method="_on_active_mouse_entered"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/sword" to="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big" method="_on_sword_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/armor" to="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big" method="_on_armor_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/accs" to="." method="_on_accs_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big/accs" to="rest/TextureRect/ScrollContainer/slide/gear/HBoxContainer/VBoxContainer/active_big" method="_on_accs_pressed"]
+[connection signal="mouse_entered" from="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing" to="rest" method="_on_ing_mouse_entered"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/ing/TextureRect/result" to="rest" method="_on_result_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/HBoxContainer/craft" to="rest" method="_on_craft_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer/HBoxContainer/reset" to="rest" method="_on_reset_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/crafting/HBoxContainer/VBoxContainer2/ScrollContainer/HBoxContainer/info/recipes" to="rest" method="_on_recipes_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2/confirm" to="rest/TextureRect/ScrollContainer/slide/upgrades" method="_on_confirm_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect2/chancel" to="rest/TextureRect/ScrollContainer/slide/upgrades" method="_on_chancel_pressed"]
+[connection signal="pressed" from="rest/TextureRect/ScrollContainer/slide/upgrades/upgrade/TextureRect/reset" to="rest/TextureRect/ScrollContainer/slide/upgrades" method="_on_reset_pressed"]
+[connection signal="pressed" from="start/TextureRect/st" to="." method="_on_st_pressed"]
+[connection signal="pressed" from="start/TextureRect/wipe" to="." method="_on_wipe_pressed"]

@@ -1,0 +1,61 @@
+Iron_Sword 0
+Black_Sword 1##
+Crystal_Sword 2X
+Wooden_Sword 3X
+Katana 4##
+Golden_Sword 5X
+Iron_Armor 6##
+Black_Armor 7##
+Crystal_Armor 8##
+Fabric_Suit 9X
+Neon_Suit 10##
+Ninja_Suit 11##
+Stone_Armor 12##
+Samurai_Armor 13##
+Mantis_Armor 14X
+Ghost_Armor 15##
+Machine_Armor 16##
+Simple_Ring 17##
+Better_Ring 18##
+Healthy_Ring 19##
+Ring_of_Tank 20##
+Stabber 21##
+Heavy_Lifter 22X
+The_Ring_Of_The_Snake 23##
+Ring_Of_Mobility 24##
+Quick_Changer 25X
+Suspicious_Ring 26X
+Talisman_Of_The_Abyss 27##
+
+Bone_Shard
+Rotten_Bone
+Ruby
+Purple_Sapphire
+Diamond
+Amethyst
+Piece_Of_Gold 34
+Bar_of_Brass
+Platinum
+Lilypad
+Rose
+Nekronomikon
+Goblin_Hide
+Brute_Brain
+Skull
+Mantis_Scales
+Mantis_Fang
+Ghostly_Essence
+Goblin_Tooth
+
+Bone_Armor 47X
+Goblin_Armor 48X
+Platinum_Armor 49X
+Rapier_Of_Ice 50X
+Mantis_Scimitar 51X
+Ruby_Sword 52X
+Goblin_Dagger 53X
+Blade_Of_Blood 54X
+Golem 55X
+Divine_Armor 56X
+
+Corrupted_Skull

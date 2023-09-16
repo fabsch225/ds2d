@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/rest/u_button_not.png" type="Texture" id=1]
+[ext_resource path="res://UI/rest/u_button.png" type="Texture" id=2]
+[ext_resource path="res://UI/rest/textfield_2.png" type="Texture" id=3]
+[ext_resource path="res://UI/rest/u_button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://UI/rest/level_field.png" type="Texture" id=5]
+[ext_resource path="res://UI/Font/MinimalPixel v2.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://UI/rest/Upgrade_Bar.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 6 )
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 900.0
+margin_bottom = 81.0
+script = ExtResource( 7 )
+
+[node name="getInfo" type="TextureButton" parent="."]
+margin_right = 517.0
+margin_bottom = 81.0
+texture_normal = ExtResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="getInfo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -238.187
+margin_top = 24.7488
+margin_right = 21.8127
+margin_bottom = 104.749
+rect_min_size = Vector2( 260, 80 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+meta_underlined = false
+text = "Health"
+scroll_active = false
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 521.0
+margin_right = 736.0
+margin_bottom = 81.0
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 31.2683
+margin_top = -12.9181
+margin_right = 291.268
+margin_bottom = 67.0819
+rect_min_size = Vector2( 260, 80 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Level 4"
+meta_underlined = false
+text = "Level 4"
+scroll_active = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 740.0
+margin_right = 804.0
+margin_bottom = 81.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 1 )
+
+[connection signal="pressed" from="getInfo" to="." method="_on_getInfo_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
