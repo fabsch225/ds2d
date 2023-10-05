@@ -15,7 +15,7 @@ var default_move_speed = 130
 var move_speed_modifier = float(move_speed) /  default_move_speed
 var max_move_speed = 230
 var min_move_speed = 70
-
+var can_move = 1
 
 var on_elevator = false
 var current_elevator = null
@@ -83,6 +83,8 @@ func set_text(t):
 
 
 func _ready():
+	
+	Hud.fade(false)
 	randomize()
 	get_tree().call_group("need_player_ref", "set_player", self)
 	PlayerData.set("player", self)
@@ -99,7 +101,8 @@ func _ready():
 
 func temp_invo():
 	invoulnerable = true
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(3), "timeout")
+	
 	invoulnerable = god
 
 func update_camera(ingame):
@@ -122,10 +125,8 @@ func damage(d, ex=false):
 		die()
 
 func die():
-	Hud.boss.stop()
-	Nav.queue = []
-	Nav.names = []
-	get_tree().reload_current_scene()
+	
+	Hud.restart()
 
 func heal():
 	print(PlayerData.global.stats)
@@ -247,7 +248,7 @@ func _physics_process(delta):
 #		move_and_slide(get_floor_velocity(), Vector2.UP)
 #
 #	else:
-	move_and_slide(velo, Vector2.UP)
+	move_and_slide(velo * can_move, Vector2.UP)
 	
 	if cur_grounded:
 		if (!last_grounded):

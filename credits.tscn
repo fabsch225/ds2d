@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://start.gd" type="Script" id=1]
+[ext_resource path="res://credits.gd" type="Script" id=1]
 [ext_resource path="res://World.tres" type="TileSet" id=2]
 [ext_resource path="res://parallax-mountain-bg.png" type="Texture" id=3]
 [ext_resource path="res://Player_Textures/Warrior_SheetnoEffect.png" type="Texture" id=25]
@@ -52,7 +52,7 @@ texture = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Navigation2D"]
 position = Vector2( 302.749, 893.511 )
 frames = SubResource( 8 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]

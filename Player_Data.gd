@@ -184,7 +184,7 @@ func sync_stats():
 	print("Recharge Rate: ", player.stamina_recharge)
 	
 	player.agility = global.stats.agility / global.default_stats.agility
-	print(player.agility)
+	print("Agility: " , player.agility)
 	
 	Hud.bars.pot_max_health = global.max_stats.health
 	Hud.bars.pot_max_stamina = global.max_stats.stamina
@@ -999,7 +999,7 @@ var global = {
 		"healing" : 40,
 		"strength" : 200,
 		"endourance" : 200,
-		"agility" : 150,
+		"agility" : 160,
 	},
 	stat_upgrades = {
 		"health" : 10,
@@ -1007,7 +1007,7 @@ var global = {
 		"healing" : 1,
 		"strength" : 10,
 		"endourance" : 10,
-		"agility" : 5,
+		"agility" : 6,
 		
 	},
 	

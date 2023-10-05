@@ -25,6 +25,8 @@ func reset():
 	var children = get_children()
 	for child in children:
 		child.visible = false
+		
+	$fade.visible = true
 
 func change_mode(t=null, skip=false):
 	if (!cooldown or skip):
@@ -61,6 +63,19 @@ func change_mode(t=null, skip=false):
 					bars.visible = true
 					get_tree().call_group("ai_act","rest",false)
 					get_tree().call_group("icons", "set_target",rest)
+				"creds":
+					fade(true);
+					yield(get_tree().create_timer(1), "timeout")
+					get_tree().change_scene("res://start.tscn")
+					fade(false)
+					$credits.visible = true
+				"start":
+					fade(true);
+					yield(get_tree().create_timer(1), "timeout")
+					$start.visible = true
+					fade(false)
+					
+				
 		else:
 			match mode:
 				"game":
@@ -93,8 +108,9 @@ func show_message(m):
 	$message/AnimationPlayer.play("Show")
 
 func start_menu():
-	$start.visible = true
-
+	pass
+	#$credits.visible = false
+	#$start.visible = true
 
 func _on_wipe_pressed():
 	var dir = Directory.new()
@@ -102,4 +118,35 @@ func _on_wipe_pressed():
 
 
 func _on_st_pressed():
+	$fade/AnimationPlayer.play("fade_in");
+	yield($fade/AnimationPlayer, "animation_finished");
 	get_tree().change_scene("res://World.tscn")
+
+func fade(f_in):
+	if f_in:
+		$fade/AnimationPlayer.play("fade_in");
+	else:
+		$fade/AnimationPlayer.play("fade_out");
+		
+func teleport(player, pos):
+	player.temp_invo()
+	fade(true)
+	yield($fade/AnimationPlayer, "animation_finished");
+	$fade/Sprite2.visible = true;
+	player.can_move = 0;
+	player.position = pos
+	yield(get_tree().create_timer(2), "timeout")
+	player.can_move = 1;
+	$fade/Sprite2.visible = false;
+	
+	fade(false)
+
+func restart():
+	Hud.boss.stop()
+	Nav.reset()
+	
+	PlayerData.player.temp_invo()
+	fade(true)
+	yield($fade/AnimationPlayer, "animation_finished");
+	Nav.queue = []
+	get_tree().reload_current_scene()

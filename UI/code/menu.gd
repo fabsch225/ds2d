@@ -11,5 +11,6 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_reload_pressed():
-	Nav.queue = []
-	get_tree().reload_current_scene()
+
+	get_parent().get_parent().get_parent().restart()
+	
