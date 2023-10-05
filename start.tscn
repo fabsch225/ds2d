@@ -52,7 +52,7 @@ texture = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Navigation2D"]
 position = Vector2( 302.749, 893.511 )
 frames = SubResource( 8 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]

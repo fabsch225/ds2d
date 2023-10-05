@@ -83,7 +83,6 @@ func set_text(t):
 
 
 func _ready():
-	
 	Hud.fade(false)
 	randomize()
 	get_tree().call_group("need_player_ref", "set_player", self)
